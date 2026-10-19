@@ -15,8 +15,7 @@ Format: `## [Stage] YYYY-MM-DD — Description`
 - Default branch renamed to `main` (PD-012 resolved).
 - Initial commit created: "docs: Step 0.3 — documentation repository foundation".
 - Added `.gitkeep` to `docs/testing/test-results/` for tracking (PD-013 resolved).
-- No remote configured yet. No push performed yet.
-- GitHub repository `https://github.com/harshthakur45s/Nexgradia.git` exists but is not yet connected.
+- GitHub remote `origin` configured (`https://github.com/harshthakur45s/Nexgradia.git`) and branch `main` pushed (PD-004 resolved).
 
 ### Files Created
 - `.gitignore` — covering OS artifacts, IDE files, secrets, env files, and future build outputs

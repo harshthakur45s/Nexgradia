@@ -60,10 +60,10 @@
 | # | Task | Owner | Status | Notes |
 |---|---|---|---|---|
 | 0.4.1 | Decide branching strategy | Team | ⏳ Pending | Feature branches recommended |
-| 0.4.2 | Connect local repo to `https://github.com/harshthakur45s/Nexgradia.git` | TBD | 🔒 Blocked | Awaiting team decision + explicit approval |
-| 0.4.3 | Add all six collaborators to GitHub repository | TBD | 🔒 Blocked | After remote connection |
-| 0.4.4 | Set branch protection rules on `main` | TBD | 🔒 Blocked | After collaborators added |
-| 0.4.5 | Push initial documentation commit | TBD | 🔒 Blocked | After commit is created and approved |
+| 0.4.2 | Connect local repo to `https://github.com/harshthakur45s/Nexgradia.git` | AI Agent | ✅ Done | Remote `origin` connected |
+| 0.4.3 | Add all six collaborators to GitHub repository | TBD | ⏳ Pending | Team configuration on GitHub |
+| 0.4.4 | Set branch protection rules on `main` | TBD | ⏳ Pending | Repository settings on GitHub |
+| 0.4.5 | Push initial documentation commit | AI Agent | ✅ Done | Pushed to `origin/main` |
 
 ---
 

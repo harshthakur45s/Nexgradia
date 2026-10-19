@@ -15,7 +15,7 @@
 | **Working name status** | "Nexgradia" is a working name. Domain and trademark checks are **[PENDING]**. |
 | **Current stage** | Step 0.3 — Documentation Repository Setup |
 | **Application development** | **NOT YET AUTHORIZED** |
-| **GitHub remote** | Exists at `https://github.com/harshthakur45s/Nexgradia.git` — **NOT YET CONNECTED** to local repo |
+| **GitHub remote** | `https://github.com/harshthakur45s/Nexgradia.git` — **CONNECTED** (`origin/main`) |
 
 ---
 
@@ -71,7 +71,7 @@ These items are unresolved. Do not invent answers for any of them.
 | PD-001 | Domain and trademark status of "Nexgradia" | **[PENDING]** |
 | PD-002 | Team member names and individual role assignments | **[PENDING]** |
 | PD-003 | Git branching strategy (feature branches vs. direct commits to main) | **[PENDING]** |
-| PD-004 | Remote platform confirmed and remote connection created | **[PENDING]** |
+| PD-004 | Remote platform confirmed and remote connection created | **Resolved** (connected to GitHub origin/main) |
 | PD-005 | Frontend framework selection | **[PENDING]** |
 | PD-006 | Backend framework selection | **[PENDING]** |
 | PD-007 | Database technology selection | **[PENDING]** |
