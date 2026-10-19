@@ -1,0 +1,182 @@
+# =============================================================================
+# Nexgradia — .gitignore
+# Project: Nexgradia — Intelligent Campus Placement & Career Intelligence Platform
+# Generated: 2026-10-19
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Windows OS artifacts
+# -----------------------------------------------------------------------------
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# -----------------------------------------------------------------------------
+# macOS artifacts
+# -----------------------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# -----------------------------------------------------------------------------
+# Linux artifacts
+# -----------------------------------------------------------------------------
+*~
+
+# -----------------------------------------------------------------------------
+# IDE and editor files
+# -----------------------------------------------------------------------------
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# JetBrains (PyCharm, IntelliJ, WebStorm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim / Neovim
+*.swp
+*.swo
+*~
+Session.vim
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Notepad++
+npp_backup/
+
+# -----------------------------------------------------------------------------
+# Environment and secrets — NEVER commit these
+# -----------------------------------------------------------------------------
+.env
+.env.*
+.env.local
+.env.development
+.env.test
+.env.production
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+secrets/
+credentials/
+*_secrets.*
+*_credentials.*
+*.secret
+
+# -----------------------------------------------------------------------------
+# Private / local-only uploads and sensitive data
+# -----------------------------------------------------------------------------
+uploads/
+private/
+local-data/
+sensitive/
+
+# -----------------------------------------------------------------------------
+# Future: Python (application development not yet authorized)
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv/
+*.egg-info/
+dist/
+build/
+*.egg
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+*.mo
+*.pot
+
+# -----------------------------------------------------------------------------
+# Future: Node.js / JavaScript (application development not yet authorized)
+# -----------------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.npm/
+.yarn/
+*.tgz
+.next/
+.nuxt/
+dist/
+.cache/
+.parcel-cache/
+
+# -----------------------------------------------------------------------------
+# Future: Build outputs and compiled files
+# -----------------------------------------------------------------------------
+*.o
+*.a
+*.lib
+*.dll
+*.exe
+*.out
+*.class
+
+# -----------------------------------------------------------------------------
+# Future: Docker and deployment (not yet authorized)
+# -----------------------------------------------------------------------------
+# docker-compose.override.yml  # Uncomment if local overrides should be private
+
+# -----------------------------------------------------------------------------
+# Logs
+# -----------------------------------------------------------------------------
+*.log
+logs/
+*.log.*
+
+# -----------------------------------------------------------------------------
+# Temporary files
+# -----------------------------------------------------------------------------
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+
+# -----------------------------------------------------------------------------
+# DO NOT ignore:
+# - Markdown documentation files (*.md)
+# - PDF documents (*.pdf) — especially the proposal
+# - docs/ directory and all subdirectories
+# -----------------------------------------------------------------------------
