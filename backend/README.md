@@ -31,8 +31,14 @@ The platform implements stateless JSON Web Token (JWT) authentication:
 ### Authentication Endpoints
 - `POST /api/v1/auth/register` — Register a student or recruiter account.
 - `POST /api/v1/auth/login` — Authenticate and receive a signed JWT Bearer token.
-- `GET /api/v1/users/me` — Retrieve the currently authenticated user's profile.
-- `GET /api/v1/users/{id}` — Retrieve a user profile by ID (owner or admin only).
+- `GET /api/v1/users/me` — Retrieve the currently authenticated user's account data.
+- `GET /api/v1/users/{id}` — Retrieve a user account by ID (owner or admin only).
+
+### Student Profile & Academic Record Endpoints (`ROLE_STUDENT` Only)
+- `GET /api/v1/students/me` — Retrieve authenticated student's profile.
+- `PUT /api/v1/students/me` — Create or update authenticated student's profile.
+- `GET /api/v1/students/me/academics` — Retrieve authenticated student's academic records and semester history.
+- `PUT /api/v1/students/me/academics` — Create or update academic records (scores, backlogs, semester breakdown). Student submissions always force `UNVERIFIED` status.
 
 ---
 

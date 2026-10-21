@@ -74,9 +74,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<ApiErrorResponse> handleResponseStatus(ResponseStatusException ex) {
+        String errorName = ex.getStatusCode() instanceof HttpStatus httpStatus
+                ? httpStatus.getReasonPhrase()
+                : ex.getStatusCode().toString();
         ApiErrorResponse error = new ApiErrorResponse(
                 ex.getStatusCode().value(),
-                ex.getStatusCode().toString(),
+                errorName,
                 ex.getReason() != null ? ex.getReason() : ex.getMessage()
         );
         return ResponseEntity.status(ex.getStatusCode()).body(error);

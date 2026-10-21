@@ -70,6 +70,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/admin/**").hasRole("PLACEMENT_ADMIN")
                         .requestMatchers("/api/v1/recruiter/**").hasRole("RECRUITER")
                         .requestMatchers("/api/v1/student/**").hasRole("STUDENT")
+                        .requestMatchers("/api/v1/students/**").hasRole("STUDENT")
                         // Default deny/require auth for all other requests
                         .anyRequest().authenticated()
                 );
