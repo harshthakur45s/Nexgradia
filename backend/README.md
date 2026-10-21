@@ -6,9 +6,50 @@ Minimal Spring Boot backend foundation for **Nexgradia — Intelligent Campus Pl
 - **Language & Runtime:** Java 21 (compatible with Java 21+)
 - **Framework:** Spring Boot 3.4.3
 - **Build Tool:** Apache Maven
+- **Security:** Spring Security 6 with JJWT (`io.jsonwebtoken` 0.12.6) stateless Bearer token authentication
 - **Database:** PostgreSQL (with Flyway migrations)
 - **Monitoring/Health:** Spring Boot Actuator + Custom Health Endpoint (`/api/v1/health`)
 - **Testing:** JUnit 5, MockMvc, H2 (for isolated unit/integration tests without running PostgreSQL)
+
+---
+
+## Authentication & Role-Based Access Control
+
+The platform implements stateless JSON Web Token (JWT) authentication:
+- **Roles:**
+  - `STUDENT`: Normal student user (can access `/api/v1/student/**` and own account profile).
+  - `RECRUITER`: Company recruitment partner (can access `/api/v1/recruiter/**` and own account profile).
+  - `PLACEMENT_ADMIN`: Placement cell administrative staff (can access `/api/v1/admin/**` and inspect user profiles).
+- **Security Controls:**
+  - Passwords hashed using **BCrypt** (10 rounds).
+  - Public registration only allows non-privileged roles (`STUDENT`, `RECRUITER`). Attempting to register `PLACEMENT_ADMIN` publicly returns HTTP 403 Forbidden.
+  - Insecure Direct Object Reference (IDOR) prevention: endpoint `/api/v1/users/{id}` strictly enforces `@PreAuthorize("hasRole('PLACEMENT_ADMIN') or #id == principal.id")`.
+  - Passwords and sensitive claims are never serialized or returned in API responses.
+  - CORS strictly configured to explicit origins (no wildcard `*` with credentials).
+  - Production profile (`application-prod.yml`) enforces that `JWT_SECRET` must be set externally and rejects default dev keys.
+
+### Authentication Endpoints
+- `POST /api/v1/auth/register` — Register a student or recruiter account.
+- `POST /api/v1/auth/login` — Authenticate and receive a signed JWT Bearer token.
+- `GET /api/v1/users/me` — Retrieve the currently authenticated user's profile.
+- `GET /api/v1/users/{id}` — Retrieve a user profile by ID (owner or admin only).
+
+---
+
+## Rate-Limiting & Brute-Force Mitigation Plan
+
+> **Current Implementation Status:**
+> Rate limiting is **NOT** yet implemented in the application source code in Task 2.
+> The architectural plan below documents how brute-force protection and rate limiting will be enforced before public deployment.
+
+1. **Authentication Endpoint Protection:**
+   - Public auth endpoints (`/api/v1/auth/login`, `/api/v1/auth/register`) are high-value targets for brute-force and credential-stuffing attacks.
+2. **Planned Mitigation Strategy:**
+   - **Layer 1 (Network/Edge WAF):** In cloud deployment (e.g., AWS CloudFront/WAF or Cloudflare), apply IP-level rate limiting (e.g., maximum 10 requests per minute per IP to `/api/v1/auth/login`).
+   - **Layer 2 (API Gateway / Filter):** A token-bucket rate limiter using **Bucket4j** backed by Redis or an in-memory sliding window cache.
+   - **Layer 3 (Account Lockout Policy):** Future feature to temporarily lock user accounts or introduce exponential backoff after multiple failed authentication attempts within a short window.
+3. **Verification Requirement:**
+   - Do not claim rate limiting is active until the implementation and its corresponding integration test suite are delivered.
 
 ---
 
@@ -16,7 +57,7 @@ Minimal Spring Boot backend foundation for **Nexgradia — Intelligent Campus Pl
 
 ### 1. Prerequisites
 - JDK 21 or later installed (`java -version`)
-- Maven 3.8+ installed (`mvn -version`)
+- Maven 3.8+ installed (`mvn -version`) or use the included `./mvnw.cmd` wrapper
 - (Optional) Docker / Docker Compose for local PostgreSQL
 
 ---
@@ -26,12 +67,12 @@ Tests run automatically against an isolated in-memory H2 database (PostgreSQL mo
 
 From the `backend/` directory:
 ```bash
-mvn test
+./mvnw test
 ```
 
 Or from the workspace root:
 ```bash
-mvn -f backend/pom.xml test
+./backend/mvnw.cmd -f backend/pom.xml test
 ```
 
 ---
@@ -59,12 +100,12 @@ docker compose down
 Set environment variables (or use defaults) and run:
 ```bash
 cd backend
-mvn spring-boot:run
+./mvnw spring-boot:run
 ```
 
 Or run the compiled JAR:
 ```bash
-mvn clean package -DskipTests
+./mvnw clean package -DskipTests
 java -jar target/nexgradia-backend-0.0.1-SNAPSHOT.jar
 ```
 

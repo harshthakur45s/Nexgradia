@@ -19,6 +19,13 @@ spring:
 server:
   port: -1
 
+app:
+  jwt:
+    secret: nexgradia_test_jwt_secret_key_at_least_32_bytes_long_hmac_sha256
+    expiration-ms: 3600000
+  cors:
+    allowed-origins: http://localhost:3000
+
 management:
   endpoints:
     web:
