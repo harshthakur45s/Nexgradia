@@ -69,6 +69,7 @@ npp_backup/
 # -----------------------------------------------------------------------------
 .env
 .env.*
+!.env.example
 .env.local
 .env.development
 .env.test
@@ -152,6 +153,8 @@ dist/
 *.exe
 *.out
 *.class
+target/
+**/target/
 
 # -----------------------------------------------------------------------------
 # Future: Docker and deployment (not yet authorized)
