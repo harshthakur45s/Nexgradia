@@ -101,9 +101,17 @@
 
 ---
 
-## Step 1.x — Application Development
+## Step 1 — Implementation Slices
 
-> 🔒 **NOT YET AUTHORIZED.** This section will be populated once Step 0 is fully complete and approved.
+### Task 1 — Backend Foundation
+
+| # | Task | Owner | Status | Notes |
+|---|---|---|---|---|
+| 1.1 | Create minimal Spring Boot 3.4.3 backend skeleton | AI Agent | ✅ Done | Java 21, Maven wrapper, Actuator, Web |
+| 1.2 | Configure PostgreSQL & Environment Variables | AI Agent | ✅ Done | Env-based with `.env.example` template |
+| 1.3 | Add Flyway baseline migration (`V1`) | AI Agent | ✅ Done | `system_metadata` foundation table |
+| 1.4 | Add Health Endpoint & Unit/Integration Tests | AI Agent | ✅ Done | 3/3 tests pass with isolated H2 test db |
+| 1.5 | Checkpoint commit & push to remote | AI Agent | ✅ Done | Commit `f6baa27` pushed to `origin/main` |
 
 ---
 

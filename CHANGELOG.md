@@ -8,6 +8,24 @@ Format: `## [Stage] YYYY-MM-DD — Description`
 
 ---
 
+## [Task 1] 2026-10-21 — Backend Foundation Implementation
+
+### Added
+- Minimal Spring Boot 3.4.3 backend foundation in `backend/`.
+- Java 21 / Maven project setup with official Maven Wrapper (`mvnw`, `mvnw.cmd`).
+- Spring Web and Actuator monitoring (`/actuator/health` and `/api/v1/health`).
+- Spring Data JPA and PostgreSQL runtime driver configured via environment variables.
+- Initial Flyway migration `V1__initial_foundation.sql` (`system_metadata` foundation table).
+- Isolated H2 in-memory database configuration for unit and integration testing.
+- Docker Compose configuration for local PostgreSQL 16 container (`backend/docker-compose.yml`).
+- Safe environment variables template (`backend/.env.example`).
+- Automated tests verifying `/api/v1/health`, Actuator health, and context loading.
+
+### Changed
+- `.gitignore`: allowed safe `.env.example` template and added ignore rules for `target/` and `**/target/`.
+
+---
+
 ## [Step 0.3] 2026-10-19 — Documentation Repository Foundation
 
 ### Initialized
