@@ -2,6 +2,12 @@ spring:
   application:
     name: nexgradia-backend-test
 
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 5MB
+
   datasource:
     url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL
     username: sa
@@ -25,6 +31,9 @@ app:
     expiration-ms: 3600000
   cors:
     allowed-origins: http://localhost:3000
+  storage:
+    resume-dir: target/test-storage/resumes
+    max-file-size-bytes: 5242880 # 5MB
 
 management:
   endpoints:

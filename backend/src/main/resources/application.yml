@@ -2,6 +2,12 @@ spring:
   application:
     name: nexgradia-backend
 
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 5MB
+
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:nexgradia_db}}
     username: ${DB_USER:nexgradia_user}
@@ -30,6 +36,9 @@ app:
     expiration-ms: ${JWT_EXPIRATION_MS:86400000} # 24 hours
   cors:
     allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:5173}
+  storage:
+    resume-dir: ${RESUME_STORAGE_DIR:storage/resumes}
+    max-file-size-bytes: ${RESUME_MAX_FILE_SIZE_BYTES:5242880} # 5MB
 
 management:
   endpoints:

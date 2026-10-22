@@ -40,6 +40,12 @@ The platform implements stateless JSON Web Token (JWT) authentication:
 - `GET /api/v1/students/me/academics` — Retrieve authenticated student's academic records and semester history.
 - `PUT /api/v1/students/me/academics` — Create or update academic records (scores, backlogs, semester breakdown). Student submissions always force `UNVERIFIED` status.
 
+### Secure Resume Management Endpoints (`ROLE_STUDENT` Only)
+- `POST /api/v1/students/me/resumes` — Upload a new resume version (PDF or DOCX, max 5MB).
+- `GET /api/v1/students/me/resumes` — List all uploaded resume versions for the authenticated student.
+- `GET /api/v1/students/me/resumes/current` — Retrieve metadata for the currently active resume version.
+- `GET /api/v1/students/me/resumes/{resumeId}/download` — Securely download an authorized resume file.
+
 ---
 
 ## Rate-Limiting & Brute-Force Mitigation Plan

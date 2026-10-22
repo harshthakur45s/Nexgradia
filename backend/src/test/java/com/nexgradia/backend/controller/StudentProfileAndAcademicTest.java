@@ -11,6 +11,7 @@ import com.nexgradia.backend.model.Role;
 import com.nexgradia.backend.model.User;
 import com.nexgradia.backend.model.VerificationStatus;
 import com.nexgradia.backend.repository.AcademicRecordRepository;
+import com.nexgradia.backend.repository.ResumeRepository;
 import com.nexgradia.backend.repository.StudentProfileRepository;
 import com.nexgradia.backend.repository.UserRepository;
 import com.nexgradia.backend.security.JwtTokenProvider;
@@ -51,6 +52,9 @@ class StudentProfileAndAcademicTest {
     private AcademicRecordRepository academicRecordRepository;
 
     @Autowired
+    private ResumeRepository resumeRepository;
+
+    @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
     @Autowired
@@ -58,6 +62,7 @@ class StudentProfileAndAcademicTest {
 
     @BeforeEach
     void setUp() {
+        resumeRepository.deleteAll();
         academicRecordRepository.deleteAll();
         profileRepository.deleteAll();
         userRepository.deleteAll();

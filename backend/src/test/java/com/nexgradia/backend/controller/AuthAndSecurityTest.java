@@ -5,6 +5,9 @@ import com.nexgradia.backend.dto.LoginRequest;
 import com.nexgradia.backend.dto.RegisterRequest;
 import com.nexgradia.backend.model.Role;
 import com.nexgradia.backend.model.User;
+import com.nexgradia.backend.repository.AcademicRecordRepository;
+import com.nexgradia.backend.repository.ResumeRepository;
+import com.nexgradia.backend.repository.StudentProfileRepository;
 import com.nexgradia.backend.repository.UserRepository;
 import com.nexgradia.backend.security.JwtTokenProvider;
 import com.nexgradia.backend.security.UserPrincipal;
@@ -43,6 +46,15 @@ class AuthAndSecurityTest {
     private UserRepository userRepository;
 
     @Autowired
+    private StudentProfileRepository profileRepository;
+
+    @Autowired
+    private AcademicRecordRepository academicRecordRepository;
+
+    @Autowired
+    private ResumeRepository resumeRepository;
+
+    @Autowired
     private ObjectMapper objectMapper;
 
     @Autowired
@@ -53,6 +65,9 @@ class AuthAndSecurityTest {
 
     @BeforeEach
     void setUp() {
+        resumeRepository.deleteAll();
+        academicRecordRepository.deleteAll();
+        profileRepository.deleteAll();
         userRepository.deleteAll();
     }
 
